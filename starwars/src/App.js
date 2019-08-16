@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
-import StarWarsGrid from "./components/StarWarsGrid";
+import './App.scss';
 import StarWarsCard from "./components/StarWarsCard"
 import axios from "axios";
+import './index.scss';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -20,24 +20,18 @@ const App = () => {
     axios
       .get(api)
       .then(response => {
-        // const data = response.data.results;
         console.log(response.data.results);
         setData(response.data.results);
       })
-    //   .then(response => {
-    //     const date = response.data.date;
-    //     console.log(response);
-    //     setDate(date);
-    //   })
   }, []);
 
   return (<>
-    // <div className="App">
-    //   <h1 className="Header">React Wars</h1>
-    // </div>
+    <div className="App">
+    <h1 className="Header">React Wars</h1>
+    </div>
     {
       data.map((ele)=>{
-        return <StarWarsCard name = {ele.name} birth = {ele.birth_year} gender = {ele.gender}/>
+        return <StarWarsCard name = {ele.name} birth = {ele.birth_year} gender = {ele.gender} hair = {ele.hair_color} eyes = {ele.eye_color}/>
 
       })
     }
